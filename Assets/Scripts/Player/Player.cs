@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
 
     [Header("Movement")]
     public float maxSpeed = 24f;   
-    public float turnSpeedBoost = 3.2f;
     public float speedBost = 2f;
     public float groundFriction = 1.5f;
     public float airSpeedMultiplier = 1.2f;
@@ -104,7 +103,7 @@ public class Player : MonoBehaviour
                 } 
                 else if(Mathf.Sign(rigidbody2d.velocity.x) != Mathf.Sign(_velocityX))
                 {
-                    rigidbody2d.AddForce(Mathf.Abs(rigidbody2d.velocity.x) * Vector2.right * turnSpeedBoost * _velocityX, ForceMode2D.Impulse);
+                    rigidbody2d.AddForce(Mathf.Abs(rigidbody2d.velocity.x) * Vector2.right * _velocityX, ForceMode2D.Impulse);
                 }
             }
 
