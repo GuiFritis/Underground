@@ -23,7 +23,7 @@ public class EnemyBase : MonoBehaviour
         health.OnDeath += OnDeath;
     }
 
-    public void SetPlayer(Player player)
+    public void SetTarget(Player player)
     {
         _target = player;
     }
