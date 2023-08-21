@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -92,23 +93,22 @@ public class Player : MonoBehaviour
             sprite.flipX = _velocityX < 0;
             float targetSpeed = maxSpeed * _velocityX;
 
-            if(Mathf.Abs(rigidbody2d.velocity.x) < .2f)
+            if(_grounded)
             {
-                rigidbody2d.AddForce(Vector2.right * speedBost * _velocityX, ForceMode2D.Force);
-            } 
-            else if(Mathf.Sign(rigidbody2d.velocity.x) != Mathf.Sign(_velocityX))
-            {
-                rigidbody2d.AddForce(Mathf.Abs(rigidbody2d.velocity.x) * Vector2.right * turnSpeedBoost * _velocityX, ForceMode2D.Impulse);
+                if(Mathf.Abs(rigidbody2d.velocity.x) < .2f)
+                {
+                    rigidbody2d.AddForce(Vector2.right * speedBost * _velocityX, ForceMode2D.Force);
+                } 
+                else if(Mathf.Sign(rigidbody2d.velocity.x) != Mathf.Sign(_velocityX))
+                {
+                    rigidbody2d.AddForce(Mathf.Abs(rigidbody2d.velocity.x) * Vector2.right * turnSpeedBoost * _velocityX, ForceMode2D.Impulse);
+                }
             }
 
             _accelerationX = (targetSpeed - rigidbody2d.velocity.x) * (_grounded ? 1f : airSpeedMultiplier);
 
 
             rigidbody2d.AddForce(Vector2.right * _accelerationX, ForceMode2D.Force);
-        } 
-        else if(!_grounded)
-        {
-            AirFriction();
         }
     }
 
@@ -129,6 +129,10 @@ public class Player : MonoBehaviour
     {
         if(_grounded || !_doubleJumped)
         {
+            if(!_grounded)
+            {
+                _doubleJumped = true;
+            }
             _jumpDelayTimer = 0;
             _jumping = true;
             _grounded = false;
@@ -138,10 +142,6 @@ public class Player : MonoBehaviour
             if(jumpVFX != null)
             {
                 jumpVFX.Play();
-            }
-            if(!_grounded)
-            {
-                _doubleJumped = true;
             }
         } else if(!_grounded) {
             _jumpDelayTimer = jumpDelayTime;
@@ -214,13 +214,6 @@ public class Player : MonoBehaviour
         _accelerationX = Mathf.Min(Mathf.Abs(rigidbody2d.velocity.x), groundFriction);
 
         _accelerationX *= Mathf.Sign(rigidbody2d.velocity.x) * -1;
-
-        rigidbody2d.AddForce(Vector2.right * _accelerationX, ForceMode2D.Impulse);
-    }
-
-    private void AirFriction()
-    {
-        _accelerationX = airFriction * Mathf.Sign(rigidbody2d.velocity.x) * -1;
 
         rigidbody2d.AddForce(Vector2.right * _accelerationX, ForceMode2D.Impulse);
     }
