@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -50,6 +49,15 @@ public class Player : MonoBehaviour
     private string _animatorFalling = "Falling";
     private string _animatorRunning = "Running";
 
+    [Header("Attack")]
+    public int damage = 2;
+    public Vector2 attackSize = Vector2.zero;
+    public float attackOffsetX = .1f;
+    public float attackRate = .8f;
+    private float _attackCooldown = 0f;
+    public LayerMask targetLayer;
+    private Collider2D[] _hitColliders;
+
     void OnValidate()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -77,9 +85,18 @@ public class Player : MonoBehaviour
         _inputs.Keyboard.Move.canceled += ctx => StopMove();
 
         _inputs.Keyboard.Jump.started += ctx => JumpUp();
+
+        _inputs.Keyboard.Attack.started += ctx => Attack();
+    }
+    
+    void Update()
+    {
+        if(_attackCooldown > 0)
+        {
+            _attackCooldown -= Time.deltaTime;
+        }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Move();
@@ -172,7 +189,17 @@ public class Player : MonoBehaviour
             _jumpDelayTimer -= Time.fixedDeltaTime;
         }
     }
+
+    private void AnimateJump(){
+        animator?.SetTrigger(_animatorJump);
+    }
     #endregion
+
+    private void AnimateFall(){
+        if(!_grounded){
+            animator?.SetBool(_animatorFalling, true);
+        }
+    }
 
     #region LAND
     private void CheckLanding()
@@ -210,6 +237,12 @@ public class Player : MonoBehaviour
             JumpUp();
         }
     }
+
+    private void AnimateLanding(){   
+        animator?.SetBool(_animatorFalling, false);
+        // PlayLandSFX();
+        // PlayMoveVFX();
+    }
     #endregion
 
     #region FRICTION
@@ -223,20 +256,41 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region ATTACK
+    private void Attack()
+    {
+        if(_attackCooldown <= 0)
+        {
+            // _hitColliders = Physics2D.OverlapCircleAll(
+            //     transform.position + (Vector3.right * attackOffsetX * (sprite.flipX ? -1 : 1)), 
+            //     attackRadius,
+            //     targetLayer                
+            // );
+
+            _hitColliders = Physics2D.OverlapCapsuleAll(
+                transform.position + (Vector3.right * attackOffsetX * (sprite.flipX ? -1 : 1)),
+                attackSize,
+                CapsuleDirection2D.Horizontal,
+                0,
+                targetLayer
+            );
+
+            if(_hitColliders.Length > 0)
+            {
+                foreach (var item in _hitColliders)
+                {
+                    item.GetComponent<HealthBase>()?.TakeDamage(damage);
+                }
+            }
+            _attackCooldown = attackRate;
+        }
+    }
+    #endregion
+
     private void OnPlayerDeath(HealthBase hp){
         healthBase.OnDeath -= OnPlayerDeath;
         // PlayDeathSFX();
         // _currentPlayer.SetTrigger("triggerDie");
-    }
-
-    private void AnimateJump(){
-        animator?.SetTrigger(_animatorJump);
-    }
-
-    private void AnimateFall(){
-        if(!_grounded){
-            animator?.SetBool(_animatorFalling, true);
-        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -269,12 +323,6 @@ public class Player : MonoBehaviour
             _grounded = false;
             AnimateFall();
         }
-    }
-
-    private void AnimateLanding(){   
-        animator?.SetBool(_animatorFalling, false);
-        // PlayLandSFX();
-        // PlayMoveVFX();
     }
 
     // private void PlayJumpVFX(){

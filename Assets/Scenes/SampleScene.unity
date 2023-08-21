@@ -289,8 +289,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2191248599937043650, guid: 871321ffcf4bb2c48a64c0c9c4af3839, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191248599937043650, guid: 871321ffcf4bb2c48a64c0c9c4af3839, type: 3}
       propertyPath: jumpForce
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191248599937043650, guid: 871321ffcf4bb2c48a64c0c9c4af3839, type: 3}
+      propertyPath: attackRate
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191248599937043650, guid: 871321ffcf4bb2c48a64c0c9c4af3839, type: 3}
+      propertyPath: attackRadius
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191248599937043650, guid: 871321ffcf4bb2c48a64c0c9c4af3839, type: 3}
+      propertyPath: attackSize.x
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191248599937043650, guid: 871321ffcf4bb2c48a64c0c9c4af3839, type: 3}
+      propertyPath: attackSize.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191248599937043650, guid: 871321ffcf4bb2c48a64c0c9c4af3839, type: 3}
+      propertyPath: attackOffsetX
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191248599937043650, guid: 871321ffcf4bb2c48a64c0c9c4af3839, type: 3}
+      propertyPath: targetLayer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 2191248599937043651, guid: 871321ffcf4bb2c48a64c0c9c4af3839, type: 3}
       propertyPath: m_Name
