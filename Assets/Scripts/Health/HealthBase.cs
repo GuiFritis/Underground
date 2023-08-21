@@ -6,15 +6,11 @@ using UnityEngine;
 public class HealthBase : MonoBehaviour
 {
     public int startLife = 5;
-
-    public bool destroyOnKill = false;
-
+    public bool destroyOnDeath = false;
     public float delayToKill = 0f;
-
-    public Action OnDeath;
-
+    public Action<HealthBase, float> OnDamage;
+    public Action<HealthBase> OnDeath;
     private int _currentLife;
-
     private bool _isDead = false;
 
     // [SerializeField]
@@ -41,6 +37,7 @@ public class HealthBase : MonoBehaviour
         }
 
         _currentLife -= damage;
+        OnDamage?.Invoke(this, damage);
 
         if(_currentLife <= 0){
             Kill();
@@ -53,13 +50,10 @@ public class HealthBase : MonoBehaviour
 
     private void Kill(){
         _isDead = true;
+        OnDeath?.Invoke(this);
 
-        if(destroyOnKill){
+        if(destroyOnDeath){
             Destroy(gameObject, delayToKill);
-        }
-
-        if(OnDeath != null){
-            OnDeath.Invoke();
         }
     }
 }

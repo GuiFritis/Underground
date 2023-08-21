@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(HealthBase))]
 public class Player : MonoBehaviour
 {
     [Header("Components")]
@@ -224,7 +224,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    private void OnPlayerDeath(){
+    private void OnPlayerDeath(HealthBase hp){
         healthBase.OnDeath -= OnPlayerDeath;
         // PlayDeathSFX();
         // _currentPlayer.SetTrigger("triggerDie");
