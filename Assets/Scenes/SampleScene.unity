@@ -176,7 +176,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.3
+  orthographic size: 1.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -243,7 +243,7 @@ MonoBehaviour:
   collider2d: {fileID: 804159482}
   healthBase: {fileID: 804159478}
   sprite: {fileID: 1652115330}
-  animator: {fileID: 0}
+  animator: {fileID: 1652115332}
   maxSpeed: 1.2
   turnSpeedBoost: 1.8
   speedBost: 1.2
@@ -260,7 +260,7 @@ MonoBehaviour:
   maxFallingSpeed: -30
   groundLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 384
 --- !u!114 &804159478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +434,7 @@ Animator:
   m_GameObject: {fileID: 1652115329}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7ac0b703828514f498eb74bc07252377, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -495,6 +495,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5648492502674982836, guid: df0edd341cf2d9843a0dc0257d5b2ac1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 5648492502989894240, guid: df0edd341cf2d9843a0dc0257d5b2ac1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5648492503091913815, guid: df0edd341cf2d9843a0dc0257d5b2ac1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.55
+      objectReference: {fileID: 0}
     - target: {fileID: 6092765382848931555, guid: df0edd341cf2d9843a0dc0257d5b2ac1, type: 3}
       propertyPath: m_Name
       value: GameBox
@@ -508,6 +520,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1275290003557468767, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.747
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275290003557468767, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.737
+      objectReference: {fileID: 0}
+    - target: {fileID: 1963721241050686129, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037115632538322649, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119093656099305236, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445802247423178008, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8185312972113819700, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -555,6 +591,14 @@ PrefabInstance:
     - target: {fileID: 8185312972113819701, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
       propertyPath: m_Name
       value: FloatingRocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679731938722465183, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 8679731938722465183, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.084
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10eab3021853d444d93adf13a05f7618, type: 3}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8475796730222409545}
   - component: {fileID: 4746175525430041068}
   - component: {fileID: 3638900956924705353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PFB_SmallFloatingRockPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

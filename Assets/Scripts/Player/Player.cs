@@ -47,6 +47,9 @@ public class Player : MonoBehaviour
     // public AudioSource landSfx;
 
     private Gameplay _inputs;
+    private string _animatorJump = "Jump";
+    private string _animatorFalling = "Falling";
+    private string _animatorRunning = "Running";
 
     void OnValidate()
     {
@@ -115,11 +118,13 @@ public class Player : MonoBehaviour
     private void StartMove(float direction)
     {
         _velocityX = direction;
+        animator.SetBool(_animatorRunning, true);
     }
 
     private void StopMove()
     {
         _velocityX = 0;
+        animator.SetBool(_animatorRunning, false);
     }
     #endregion
 
@@ -150,7 +155,7 @@ public class Player : MonoBehaviour
 
     private void Jumping()
     {
-        if(_jumping && rigidbody2d.velocity.y < .1f)
+        if(_jumping && rigidbody2d.velocity.y < .2f)
         {
             _jumping = false;
             AnimateFall();
@@ -226,13 +231,12 @@ public class Player : MonoBehaviour
     }
 
     private void AnimateJump(){
-        animator?.SetBool("Jumping", true);
+        animator?.SetTrigger(_animatorJump);
     }
 
     private void AnimateFall(){
         if(!_grounded){
-            animator?.SetBool("Falling", true);
-            animator?.SetBool("Jumping", false);
+            animator?.SetBool(_animatorFalling, true);
         }
     }
 
@@ -268,10 +272,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void AnimateLanding(){
-        animator?.SetTrigger("Land");        
-        animator?.SetBool("Falling", false);
-        animator?.SetBool("Jumping", false);
+    private void AnimateLanding(){   
+        animator?.SetBool(_animatorFalling, false);
         // PlayLandSFX();
         // PlayMoveVFX();
     }
