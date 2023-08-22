@@ -18,7 +18,7 @@ namespace Floors
     {
         public FloorWorld floorWorld;
         public List<FloorEnemy> floorEnemies = new();
-        public List<GameObject> floorItens = new();
+        public List<FloorItem> floorItens = new();
         public Action OnComplete;
         private float _enemySpawnRate = 1f;
         private float _enemySpawnCooldown;
@@ -31,7 +31,7 @@ namespace Floors
             {
                 for (int i = 0; i < transform.childCount; i++)
                 {
-                    floorItens.Add(transform.GetChild(i).gameObject);
+                    floorItens.Add(transform.GetChild(i).gameObject.GetComponent<FloorItem>());
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace Floors
             _enemySpawnRate = spawnRate;
             foreach (var item in floorItens)
             {
-                item.SetActive(true);
+                item.EnableItem();
             }
         }
 
@@ -99,7 +99,7 @@ namespace Floors
         {
             foreach (var item in floorItens)
             {
-                item.SetActive(false);
+                item.DisableItem();
             }
         }
     }
