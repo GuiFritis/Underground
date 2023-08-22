@@ -12,6 +12,8 @@ namespace Floors
         public Player player;
         public TextFadeHelper textCompleteFloor;
         [Header("Floors")]
+        public SOInt soFloor;
+        public SOInt soEnemiesKilled;
         public List<Floor> floors = new();
         private Floor _currentFloor;
         private Floor _nextFloor;
@@ -29,6 +31,8 @@ namespace Floors
         public float spawnPointX = 2.88f;
 
         void Start(){
+            soFloor.Value = 0;
+            soEnemiesKilled.Value = 0;
             _currentSpawnRate = startSpawnRate;
             GenerateFirstFloor();
             StartNextFloor();
@@ -59,6 +63,7 @@ namespace Floors
 
         private void StartNextFloor()
         {
+            soFloor.Value++;
             if(_currentFloor != null)
             {
                 Destroy(_currentFloor.gameObject);

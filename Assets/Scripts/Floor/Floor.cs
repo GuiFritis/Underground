@@ -93,6 +93,7 @@ namespace Floors
         private void EnemyKilled(HealthBase hp)
         {
             _killedEnemies++;
+            FloorManager.Instance.soEnemiesKilled.Value++;
         }
 
         public void EndFloor()
