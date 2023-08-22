@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(HealthBase))]
 public class Player : MonoBehaviour
@@ -58,6 +59,7 @@ public class Player : MonoBehaviour
     private float _attackCooldown = 0f;
     public LayerMask targetLayer;
     private Collider2D[] _hitColliders;
+    public ParticleSystem attackVFX;
 
     void OnValidate()
     {
@@ -110,7 +112,7 @@ public class Player : MonoBehaviour
     {
         if(_velocityX != 0)
         {
-            sprite.flipX = _velocityX < 0;
+            transform.DORotate(Vector3.up * (_velocityX < 0 ? 180f : 0f), .1f);
             float targetSpeed = maxSpeed * _velocityX;
 
             if(_grounded)
@@ -269,7 +271,7 @@ public class Player : MonoBehaviour
             // );
 
             _hitColliders = Physics2D.OverlapCapsuleAll(
-                transform.position + (Vector3.right * attackOffsetX * (sprite.flipX ? -1 : 1)),
+                transform.position + (Vector3.right * attackOffsetX * (transform.rotation.y != 0f ? -1 : 1)),
                 attackSize,
                 CapsuleDirection2D.Horizontal,
                 0,
@@ -283,6 +285,7 @@ public class Player : MonoBehaviour
                     item.GetComponent<HealthBase>()?.TakeDamage(damage);
                 }
             }
+            attackVFX?.Play();
             _attackCooldown = attackRate;
         }
     }
