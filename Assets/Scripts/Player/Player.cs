@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     private string _animatorJump = "Jump";
     private string _animatorFalling = "Falling";
     private string _animatorRunning = "Running";
+    private string _animatorPlatformMoving = "PlatformMoving";
 
     [Header("Attack")]
     public int damage = 2;
@@ -284,6 +285,22 @@ public class Player : MonoBehaviour
             }
             _attackCooldown = attackRate;
         }
+    }
+    #endregion
+
+    #region PLATFORM_MOVE
+    public void StartPlatformMove()
+    {
+        _inputs.Disable();
+        rigidbody2d.bodyType = RigidbodyType2D.Static;
+        animator.SetBool(_animatorPlatformMoving, true);
+    }
+
+    public void EndPlatformMove()
+    {
+        _inputs.Enable();
+        rigidbody2d.bodyType = RigidbodyType2D.Dynamic;
+        animator.SetBool(_animatorPlatformMoving, false);
     }
     #endregion
 

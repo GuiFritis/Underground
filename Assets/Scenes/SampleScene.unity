@@ -257,7 +257,7 @@ MonoBehaviour:
   - {fileID: 1570895686725601622, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
   moveDuration: 4
   moveDistance: -3.2
-  moveEase: 27
+  moveEase: 3
   movingObjects:
   - {fileID: 2105183939}
   - {fileID: 519420032}
@@ -444,6 +444,10 @@ PrefabInstance:
     - target: {fileID: 5648492503091913816, guid: df0edd341cf2d9843a0dc0257d5b2ac1, type: 3}
       propertyPath: m_Name
       value: LeftWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5648492504080840909, guid: df0edd341cf2d9843a0dc0257d5b2ac1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6092765382848931555, guid: df0edd341cf2d9843a0dc0257d5b2ac1, type: 3}
       propertyPath: m_Name

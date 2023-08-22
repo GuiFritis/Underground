@@ -75,7 +75,7 @@ namespace Floors
                 floorEnemy.pfbEnemy, 
                 new Vector3(
                     FloorManager.Instance.spawnPointX * (UnityEngine.Random.Range(0, 2) == 0 ? 1 : -1), 
-                    floorEnemy.startPointY
+                    transform.position.y + floorEnemy.startPointY
                 ), 
                 floorEnemy.pfbEnemy.transform.rotation, 
                 transform

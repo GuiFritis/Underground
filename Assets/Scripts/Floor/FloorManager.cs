@@ -46,7 +46,10 @@ namespace Floors
             {
                 item.DOMoveY(moveDistance, moveDuration).SetEase(moveEase).SetRelative(true);
             }
+            player.StartPlatformMove();
+            player.transform.DOMoveY(moveDistance, moveDuration).SetEase(moveEase).SetRelative(true);
             yield return new WaitForSeconds(moveDuration);
+            player.EndPlatformMove();
             StartNextFloor();
         }
 
