@@ -12,6 +12,7 @@ public class HealthBase : MonoBehaviour
     public Action<HealthBase> OnDeath;
     private int _currentLife;
     private bool _isDead = false;
+    private bool _imune = false;
 
     // [SerializeField]
     // private FlashColor _flashColor;
@@ -32,7 +33,7 @@ public class HealthBase : MonoBehaviour
 
     public void TakeDamage(int damage){
 
-        if(_isDead){
+        if(_isDead || _imune){
             return;
         }
 
@@ -60,5 +61,10 @@ public class HealthBase : MonoBehaviour
     public int GetCurrentHealth()
     {
         return _currentLife;
+    }
+
+    public void BecomeImune(bool imune = true)
+    {
+        _imune = imune;
     }
 }

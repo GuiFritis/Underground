@@ -222,6 +222,7 @@ MonoBehaviour:
   healthBase: {fileID: 2191248599937043649}
   sprite: {fileID: 2191248598636098741}
   animator: {fileID: 2191248598636098739}
+  imunityTime: 0.8
   maxSpeed: 1.2
   speedBost: 1.2
   groundFriction: 20

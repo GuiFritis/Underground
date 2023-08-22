@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     public SpriteRenderer sprite;    
     public Animator animator;
 
+    [Space]
+    public float imunityTime = 1f;
+
     [Header("Movement")]
     public float maxSpeed = 24f;   
     public float speedBost = 2f;
@@ -74,6 +77,7 @@ public class Player : MonoBehaviour
     {
         if(healthBase != null){
             healthBase.OnDeath += OnPlayerDeath;
+            healthBase.OnDamage += PlayerDamaged;
         }
         SetInputs();
         _velocityX = 0f;
@@ -306,6 +310,18 @@ public class Player : MonoBehaviour
         animator.SetBool(_animatorPlatformMoving, false);
     }
     #endregion
+
+    private void PlayerDamaged(HealthBase hp, int damage)
+    {
+        StartCoroutine(BecomeImune());
+    }
+
+    private IEnumerator BecomeImune()
+    {
+        healthBase.BecomeImune(true);
+        yield return new WaitForSeconds(imunityTime);
+        healthBase.BecomeImune(false);
+    }
 
     private void OnPlayerDeath(HealthBase hp){
         healthBase.OnDeath -= OnPlayerDeath;
