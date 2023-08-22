@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
     {
         if(_velocityX != 0)
         {
-            transform.DORotate(Vector3.up * (_velocityX < 0 ? 180f : 0f), .1f);
+            transform.DORotate(Vector3.up * (_velocityX < 0 ? 180f : 0f), .01f);
             float targetSpeed = maxSpeed * _velocityX;
 
             if(_grounded)
@@ -200,6 +200,7 @@ public class Player : MonoBehaviour
 
     private void AnimateJump(){
         animator?.SetTrigger(_animatorJump);
+        jumpVFX?.Play();
     }
     #endregion
 
@@ -233,10 +234,6 @@ public class Player : MonoBehaviour
         _jumping = _doubleJumped = false;
         _grounded = true;     
         AnimateLanding();
-        // if(landVFX != null)
-        // {
-        //     landVFX.Play();
-        // }
         
         if(_jumpDelayTimer > 0)
         {
@@ -248,8 +245,7 @@ public class Player : MonoBehaviour
 
     private void AnimateLanding(){   
         animator?.SetBool(_animatorFalling, false);
-        // PlayLandSFX();
-        // PlayMoveVFX();
+        landVFX?.Play();
     }
     #endregion
 
@@ -335,8 +331,6 @@ public class Player : MonoBehaviour
     private void OnPlayerDeath(HealthBase hp){
         healthBase.OnDeath -= OnPlayerDeath;
         _inputs.Disable();
-        // PlayDeathSFX();
-        // _currentPlayer.SetTrigger("triggerDie");
     }
 
     void OnDisable()
@@ -375,39 +369,7 @@ public class Player : MonoBehaviour
             AnimateFall();
         }
     }
-
-    // private void PlayJumpVFX(){
-    //     VFXManager.Instance.PlayVFXByType(VFXManager.VFXType.JUMP, transform.position);
-    // }
-
-    // private void PlayJumpSFX(){
-    //     if(jumpSfx != null){
-    //         jumpSfx.Play();
-    //     }
-    // }
-
-    // private void PlayLandSFX(){
-    //     if(landSfx != null){
-    //         landSfx.Play();
-    //     }
-    // }
-
-    // private void PlayDeathSFX(){
-    //     if(deathSfx != null){
-    //         deathSfx.Play();
-    //     }
-    // }
-
-    // private void PlayMoveVFX(){
-    //     if(moveVFX != null){
-    //         moveVFX.Play();
-    //     }
-    // }
-    // private void StopMoveVFX(){
-    //     if(moveVFX != null){
-    //         moveVFX.Stop();
-    //     }
-    // }
+    
     public void DestroyMe()
     {
         Destroy(gameObject);
