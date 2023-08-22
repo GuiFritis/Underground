@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
     private string _animatorFalling = "Falling";
     private string _animatorRunning = "Running";
     private string _animatorPlatformMoving = "PlatformMoving";
+    private string _animatorShoot = "Shoot";
 
     [Header("Attack")]
     public int damage = 2;
@@ -290,8 +291,16 @@ public class Player : MonoBehaviour
                 }
             }
             attackVFX?.Play();
+            StartCoroutine(AttackAnimation());
             _attackCooldown = attackRate;
         }
+    }
+
+    private IEnumerator AttackAnimation()
+    {
+        animator.SetBool(_animatorShoot, true);
+        yield return new WaitForSeconds(.3f);
+        animator.SetBool(_animatorShoot, false);
     }
     #endregion
 
@@ -325,8 +334,14 @@ public class Player : MonoBehaviour
 
     private void OnPlayerDeath(HealthBase hp){
         healthBase.OnDeath -= OnPlayerDeath;
+        _inputs.Disable();
         // PlayDeathSFX();
         // _currentPlayer.SetTrigger("triggerDie");
+    }
+
+    void OnDisable()
+    {
+        _inputs.Disable();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
