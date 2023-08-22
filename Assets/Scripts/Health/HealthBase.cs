@@ -8,7 +8,7 @@ public class HealthBase : MonoBehaviour
     public int startLife = 5;
     public bool destroyOnDeath = false;
     public float delayToKill = 0f;
-    public Action<HealthBase, float> OnDamage;
+    public Action<HealthBase, int> OnDamage;
     public Action<HealthBase> OnDeath;
     private int _currentLife;
     private bool _isDead = false;
@@ -55,5 +55,10 @@ public class HealthBase : MonoBehaviour
         if(destroyOnDeath){
             Destroy(gameObject, delayToKill);
         }
+    }
+
+    public int GetCurrentHealth()
+    {
+        return _currentLife;
     }
 }

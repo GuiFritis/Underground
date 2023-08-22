@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 2191248599937043648}
   - component: {fileID: 2191248599937043649}
   - component: {fileID: 2191248599937043650}
+  - component: {fileID: 4345113015271813492}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -245,6 +246,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attackVFX: {fileID: 3344019217363485357}
+--- !u!114 &4345113015271813492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2191248599937043651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db51c8bc53cae6146922ade1f3ec62ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 2191248599937043649}
+  sprite: {fileID: 2191248598636098741}
+  flashDuration: 0.3
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &4358845113123058726
 GameObject:
   m_ObjectHideFlags: 0
