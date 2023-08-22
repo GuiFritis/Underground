@@ -53,6 +53,15 @@ public partial class @Gameplay : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CallMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""517d4b79-c2e3-4471-ac3e-6727bae10f39"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -121,6 +130,17 @@ public partial class @Gameplay : IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16675fa2-d502-46d3-bf96-9a340e8df67c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CallMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -132,6 +152,7 @@ public partial class @Gameplay : IInputActionCollection2, IDisposable
         m_Keyboard_Move = m_Keyboard.FindAction("Move", throwIfNotFound: true);
         m_Keyboard_Jump = m_Keyboard.FindAction("Jump", throwIfNotFound: true);
         m_Keyboard_Attack = m_Keyboard.FindAction("Attack", throwIfNotFound: true);
+        m_Keyboard_CallMenu = m_Keyboard.FindAction("CallMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -194,6 +215,7 @@ public partial class @Gameplay : IInputActionCollection2, IDisposable
     private readonly InputAction m_Keyboard_Move;
     private readonly InputAction m_Keyboard_Jump;
     private readonly InputAction m_Keyboard_Attack;
+    private readonly InputAction m_Keyboard_CallMenu;
     public struct KeyboardActions
     {
         private @Gameplay m_Wrapper;
@@ -201,6 +223,7 @@ public partial class @Gameplay : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Keyboard_Move;
         public InputAction @Jump => m_Wrapper.m_Keyboard_Jump;
         public InputAction @Attack => m_Wrapper.m_Keyboard_Attack;
+        public InputAction @CallMenu => m_Wrapper.m_Keyboard_CallMenu;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -219,6 +242,9 @@ public partial class @Gameplay : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnAttack;
+                @CallMenu.started -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnCallMenu;
+                @CallMenu.performed -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnCallMenu;
+                @CallMenu.canceled -= m_Wrapper.m_KeyboardActionsCallbackInterface.OnCallMenu;
             }
             m_Wrapper.m_KeyboardActionsCallbackInterface = instance;
             if (instance != null)
@@ -232,6 +258,9 @@ public partial class @Gameplay : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @CallMenu.started += instance.OnCallMenu;
+                @CallMenu.performed += instance.OnCallMenu;
+                @CallMenu.canceled += instance.OnCallMenu;
             }
         }
     }
@@ -241,5 +270,6 @@ public partial class @Gameplay : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnCallMenu(InputAction.CallbackContext context);
     }
 }
