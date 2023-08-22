@@ -10,6 +10,7 @@ namespace Floors
     public class FloorManager : Singleton<FloorManager>
     {
         public Player player;
+        public TextFadeHelper textCompleteFloor;
         [Header("Floors")]
         public List<Floor> floors = new();
         private Floor _currentFloor;
@@ -42,12 +43,15 @@ namespace Floors
 
         private IEnumerator MovePlatformDown()
         {
+            textCompleteFloor.FadeIn();
+            yield return new WaitForSeconds(textCompleteFloor.fadeDuration);
             foreach (var item in movingObjects)
             {
                 item.DOMoveY(moveDistance, moveDuration).SetEase(moveEase).SetRelative(true);
             }
             player.StartPlatformMove();
             player.transform.DOMoveY(moveDistance, moveDuration).SetEase(moveEase).SetRelative(true);
+            textCompleteFloor.FadeOut();
             yield return new WaitForSeconds(moveDuration);
             player.EndPlatformMove();
             StartNextFloor();

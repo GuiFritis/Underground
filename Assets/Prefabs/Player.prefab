@@ -293,7 +293,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -361,7 +361,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.46
+      scalar: 0.42
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -414,8 +414,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2.2
-      minScalar: 1.8
+      scalar: 3.8
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1609,7 +1609,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0.9705882}
+        key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1625,7 +1625,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 40863
+        atime1: 28527
         atime2: 65535
         atime3: 0
         atime4: 0
@@ -2331,20 +2331,29 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: 0
-          outSlope: 0
+          inSlope: -0.15530547
+          outSlope: -0.15530547
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0.4524612
         - serializedVersion: 3
-          time: 1
-          value: 0.027026922
-          inSlope: -2.599865
-          outSlope: -2.599865
+          time: 0.15972221
+          value: 0.93633354
+          inSlope: -1.3535355
+          outSlope: -1.3535355
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.02494961
+          inWeight: 0.33333334
+          outWeight: 0.19591177
+        - serializedVersion: 3
+          time: 1
+          value: -0.00000011920929
+          inSlope: 0.063786484
+          outSlope: 0.063786484
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.30253616
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
