@@ -10,6 +10,7 @@ public class EnemyChaser : EnemyBase
     public float sightHeight = .25f;
     public float stopChaseDistance = .2f;
     protected float _currentSpeed;
+    public bool spriteFacingRight = true;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class EnemyChaser : EnemyBase
     {
         if(Mathf.Abs(_target.transform.position.x - transform.position.x) > stopChaseDistance)
         {
-            sprite.flipX = _target.transform.position.x > transform.position.x;
+            sprite.flipX = _target.transform.position.x > transform.position.x ^ spriteFacingRight;
             transform.Translate(Vector2.right * _currentSpeed * Time.deltaTime * (sprite.flipX ? 1 : -1));
         }
         animator.speed = _currentSpeed / speed;

@@ -4,26 +4,35 @@ using UnityEngine;
 
 public class FloorItem : MonoBehaviour
 {
-    public Collider2D collider2d;
+    public Collider2D[] colliders;
 
     void OnValidate()
     {
-        collider2d = GetComponent<Collider2D>();
+        if(colliders != null)
+        {
+            colliders = GetComponents<Collider2D>();
+        }
     }
 
     public void EnableItem()
     {
-        if(collider2d != null)
+        if(colliders != null)
         {
-            collider2d.enabled = true;
+            foreach (var item in colliders)
+            {
+                item.enabled = true;
+            }
         }
     }
 
     public void DisableItem()
     {
-        if(collider2d != null)
+        if(colliders != null)
         {
-            collider2d.enabled = false;
+            foreach (var item in colliders)
+            {
+                item.enabled = false;
+            }
         }
     }
 }

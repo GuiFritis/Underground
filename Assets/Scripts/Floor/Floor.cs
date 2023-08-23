@@ -11,7 +11,9 @@ namespace Floors
         FLOATING_ROCKS,
         WARPED_CAVES,
         GRAVEYARD,
-        SUNNY_LANDS
+        SUNNY_LANDS,
+        SWAMP,
+        FUTURE
     }
 
     public class Floor : MonoBehaviour
@@ -32,7 +34,7 @@ namespace Floors
             {
                 for (int i = 0; i < transform.childCount; i++)
                 {
-                    floorItens.Add(transform.GetChild(i).gameObject.GetComponent<FloorItem>());
+                    floorItens.Add(transform.GetComponentInChildren<FloorItem>());
                 }
             }
         }

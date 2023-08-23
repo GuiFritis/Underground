@@ -156,8 +156,9 @@ MonoBehaviour:
   sprite: {fileID: 6281185316537577681}
   animator: {fileID: 6281185316537577682}
   _target: {fileID: 0}
-  speed: 0.6
+  speed: 0.63
   stopFlyghtDistance: 0.2
+  spriteFacingRight: 0
 --- !u!114 &4838522062698453698
 MonoBehaviour:
   m_ObjectHideFlags: 0
