@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6281185316537577683}
   - component: {fileID: 6281185316537577692}
   - component: {fileID: 4838522062698453698}
+  - component: {fileID: 8892016344378356393}
   m_Layer: 9
   m_Name: PFB_Eagle
   m_TagString: Untagged
@@ -177,3 +178,19 @@ MonoBehaviour:
   damage: 1
   damageRate: 1
   destroyOnContact: 0
+--- !u!114 &8892016344378356393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281185316537577694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db51c8bc53cae6146922ade1f3ec62ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 6281185316537577683}
+  sprite: {fileID: 6281185316537577681}
+  flashDuration: 0.3
+  targetColor: {r: 1, g: 0, b: 0, a: 1}

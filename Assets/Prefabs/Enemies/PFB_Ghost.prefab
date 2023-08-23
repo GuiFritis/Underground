@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4142506503354062284}
   - component: {fileID: 3688574061721455620}
   - component: {fileID: 2598693245198310535}
+  - component: {fileID: 3956714082773642550}
   m_Layer: 9
   m_Name: PFB_Ghost
   m_TagString: Untagged
@@ -137,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74689bc609f8c1c42bcf5f86e6d10cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLife: 2
+  startLife: 1
   destroyOnDeath: 1
   delayToKill: 0.1
 --- !u!114 &3688574061721455620
@@ -177,3 +178,19 @@ MonoBehaviour:
   damage: 1
   damageRate: 1
   destroyOnContact: 0
+--- !u!114 &3956714082773642550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7310998897431310747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db51c8bc53cae6146922ade1f3ec62ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 4142506503354062284}
+  sprite: {fileID: 4092992406095573699}
+  flashDuration: 0.3
+  targetColor: {r: 1, g: 0, b: 0, a: 1}

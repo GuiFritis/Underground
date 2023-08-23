@@ -13,7 +13,8 @@ namespace Floors
         GRAVEYARD,
         SUNNY_LANDS,
         SWAMP,
-        FUTURE
+        FUTURE,
+        DEEP_SEA
     }
 
     public class Floor : MonoBehaviour
