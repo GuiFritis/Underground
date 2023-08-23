@@ -23,6 +23,7 @@ namespace Floors
         public Ease moveEase = Ease.OutBounce;
         public List<Transform> movingObjects;
         [Header("Enemy Spawn Rate")]
+        public int baseEnemySpawn = 4;
         public float startSpawnRate = 1.4f;
         public float updateRatePerFloor = -.08f;
         public float minStartSpawnRate = .5f;
@@ -89,6 +90,10 @@ namespace Floors
             }
             _nextFloor = Instantiate(_nextFloor, transform.position + Vector3.up * moveDistance, Quaternion.identity);
             _nextFloor.enabled = false;
+            _nextFloor.enemiesToSpawn = baseEnemySpawn + Random.Range(
+                Mathf.Min(baseEnemySpawn, soFloor.Value), 
+                Mathf.Max(baseEnemySpawn + 1, soFloor.Value + 1)
+            );
         }
         
         private void GenerateFirstFloor()
@@ -96,6 +101,10 @@ namespace Floors
             _nextFloor = floors.GetRandom();
             _nextFloor = Instantiate(_nextFloor, transform.position, Quaternion.identity);
             _nextFloor.enabled = false;
-        }
+            _nextFloor.enemiesToSpawn = baseEnemySpawn + Random.Range(
+                Mathf.Min(baseEnemySpawn, soFloor.Value), 
+                Mathf.Max(baseEnemySpawn + 1, soFloor.Value + 1)
+            );
+        }        
     }
 }

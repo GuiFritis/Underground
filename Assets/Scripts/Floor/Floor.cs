@@ -20,6 +20,7 @@ namespace Floors
         public List<FloorEnemy> floorEnemies = new();
         public List<FloorItem> floorItens = new();
         public Action OnComplete;
+        public int enemiesToSpawn = 0;
         private float _enemySpawnRate = 1f;
         private float _enemySpawnCooldown;
         private int _spawnedEnemies = 0;
@@ -38,7 +39,7 @@ namespace Floors
 
         void Update()
         {
-            if(floorEnemies.Count > 0)
+            if(_spawnedEnemies < enemiesToSpawn)
             {
                 if(_enemySpawnCooldown < 0)
                 {
@@ -82,11 +83,6 @@ namespace Floors
             );
             enemy.SetTarget(FloorManager.Instance.player);
             _spawnedEnemies++;
-            floorEnemy.SpawnEnemy();
-            if(floorEnemy.enemiesAmount == floorEnemy.GetSpawnedEnemies())
-            {
-                floorEnemies.Remove(floorEnemy);
-            }
             enemy.health.OnDeath += EnemyKilled;
         }
 
@@ -109,18 +105,6 @@ namespace Floors
     public class FloorEnemy
     {
         public EnemyBase pfbEnemy;
-        public int enemiesAmount = 1;
         public float startPointY = 0;
-        private int _spawnedEnemies = 0;
-
-        public int GetSpawnedEnemies()
-        {
-            return _spawnedEnemies;
-        }
-
-        public void SpawnEnemy()
-        {
-            _spawnedEnemies++;
-        }
     }
 }
