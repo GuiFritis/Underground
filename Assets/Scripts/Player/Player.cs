@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
     public int specialAttackDamage = 2;
     public Vector2 specialAttackSize = Vector2.zero;
     public ParticleSystem specialAttackVFX;
+    public ParticleSystem specialAttackBlastVFX;
     private int _combo = 1;
 
     void OnValidate()
@@ -324,6 +325,7 @@ public class Player : MonoBehaviour
             }
         }
         specialAttackVFX?.Play();
+        specialAttackBlastVFX?.Play();
         StartCoroutine(AttackAnimation());
         _attackCooldown = rechargeRate;
         _combo = 1;
