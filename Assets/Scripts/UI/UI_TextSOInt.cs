@@ -10,7 +10,7 @@ public class UI_TextSOInt : MonoBehaviour
     public string prefix;
     public string sufix;
 
-    void Start()
+    void Awake()
     {
         soFloor.OnValueChanged += UpdateText;
     }

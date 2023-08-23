@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4417869436779242828}
   - component: {fileID: 6812407487779619627}
   - component: {fileID: 8088254467605490075}
+  - component: {fileID: 7860201952994580921}
   - component: {fileID: 3482154308725300319}
   - component: {fileID: 728192495992796254}
-  - component: {fileID: 7860201952994580921}
+  - component: {fileID: 1600192635652441322}
   m_Layer: 9
   m_Name: PFB_Crab
   m_TagString: Untagged
@@ -108,6 +109,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &7860201952994580921
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3084960291686355596}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.020354211}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.48, y: 0.32}
+    newSize: {x: 0.48, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.27275753, y: 0.2570871}
+  m_EdgeRadius: 0
 --- !u!114 &3482154308725300319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,29 +171,21 @@ MonoBehaviour:
   speedTransitionDuration: 1
   sightHeight: 0.3
   stopChaseDistance: 0.2
---- !u!61 &7860201952994580921
-BoxCollider2D:
+--- !u!114 &1600192635652441322
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3084960291686355596}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.020354211}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.32}
-    newSize: {x: 0.48, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.27275753, y: 0.2570871}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e980c3faadcc83541b5413fad46d50d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  damage: 1
+  damageRate: 0.8
+  destroyOnContact: 0
