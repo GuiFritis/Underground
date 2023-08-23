@@ -56,14 +56,21 @@ public class Player : MonoBehaviour
     private string _animatorShoot = "Shoot";
 
     [Header("Attack")]
-    public int damage = 2;
+    public int damage = 1;
     public Vector2 attackSize = Vector2.zero;
-    public float attackOffsetX = .1f;
-    public float attackRate = .8f;
-    private float _attackCooldown = 0f;
+    public float attackRate = .5f;
+    public float rechargeRate = 1f;
     public LayerMask targetLayer;
-    private Collider2D[] _hitColliders;
     public ParticleSystem attackVFX;
+    private float _attackCooldown = 0f;
+    private Collider2D[] _hitColliders;
+
+    [Header("Special Attack")]
+    public int comboAttack = 3;
+    public int specialAttackDamage = 2;
+    public Vector2 specialAttackSize = Vector2.zero;
+    public ParticleSystem specialAttackVFX;
+    private int _combo = 1;
 
     void OnValidate()
     {
@@ -265,31 +272,61 @@ public class Player : MonoBehaviour
     {
         if(_attackCooldown <= 0)
         {
-            // _hitColliders = Physics2D.OverlapCircleAll(
-            //     transform.position + (Vector3.right * attackOffsetX * (sprite.flipX ? -1 : 1)), 
-            //     attackRadius,
-            //     targetLayer                
-            // );
-
-            _hitColliders = Physics2D.OverlapCapsuleAll(
-                transform.position + (Vector3.right * attackOffsetX * (transform.rotation.y != 0f ? -1 : 1)),
-                attackSize,
-                CapsuleDirection2D.Horizontal,
-                0,
-                targetLayer
-            );
-
-            if(_hitColliders.Length > 0)
+            if(_combo == comboAttack)
             {
-                foreach (var item in _hitColliders)
-                {
-                    item.GetComponent<HealthBase>()?.TakeDamage(damage);
-                }
+                SpecialAttack();
             }
-            attackVFX?.Play();
-            StartCoroutine(AttackAnimation());
-            _attackCooldown = attackRate;
+            else
+            {
+                NormalAttack();
+            }
         }
+    }
+
+    private void NormalAttack()
+    {
+        _hitColliders = Physics2D.OverlapCapsuleAll(
+            transform.position + attackSize.x/2 * Vector3.right * (transform.rotation.y != 0f ? -1 : 1),
+            attackSize,
+            CapsuleDirection2D.Horizontal,
+            0,
+            targetLayer
+        );
+
+        if(_hitColliders.Length > 0)
+        {
+            foreach (var item in _hitColliders)
+            {
+                item.GetComponent<HealthBase>()?.TakeDamage(damage);
+            }
+        }
+        attackVFX?.Play();
+        StartCoroutine(AttackAnimation());
+        _attackCooldown = attackRate;
+        _combo++;
+    }
+
+    private void SpecialAttack()
+    {
+        _hitColliders = Physics2D.OverlapCapsuleAll(
+            transform.position + specialAttackSize.x/2 * Vector3.right * (transform.rotation.y != 0f ? -1 : 1),
+            specialAttackSize,
+            CapsuleDirection2D.Horizontal,
+            0,
+            targetLayer
+        );
+
+        if(_hitColliders.Length > 0)
+        {
+            foreach (var item in _hitColliders)
+            {
+                item.GetComponent<HealthBase>()?.TakeDamage(specialAttackDamage);
+            }
+        }
+        specialAttackVFX?.Play();
+        StartCoroutine(AttackAnimation());
+        _attackCooldown = rechargeRate;
+        _combo = 1;
     }
 
     private IEnumerator AttackAnimation()
