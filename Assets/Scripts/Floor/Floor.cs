@@ -84,6 +84,9 @@ namespace Floors
                 transform
             );
             enemy.SetTarget(FloorManager.Instance.player);
+            enemy.health.IncreaseHealth(
+                Mathf.FloorToInt(FloorManager.Instance.extraHealthPerFloor * FloorManager.Instance.soFloor.Value)
+            );
             _spawnedEnemies++;
             enemy.health.OnDeath += EnemyKilled;
         }

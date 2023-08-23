@@ -58,6 +58,11 @@ public class HealthBase : MonoBehaviour
         }
     }
 
+    public void IncreaseHealth(int extraHealth)
+    {
+        _currentLife += extraHealth;
+    }
+
     public int GetCurrentHealth()
     {
         return _currentLife;

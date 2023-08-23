@@ -10,7 +10,6 @@ namespace Floors
     public class FloorManager : Singleton<FloorManager>
     {
         public Player player;
-        public TextFadeHelper textCompleteFloor;
         [Header("Floors")]
         public SOInt soFloor;
         public SOInt soEnemiesKilled;
@@ -18,11 +17,12 @@ namespace Floors
         private Floor _currentFloor;
         private Floor _nextFloor;
         [Header("Main Platform Move")]
+        public TextFadeHelper textCompleteFloor;
         public float moveDuration = 3f;
         public float moveDistance = -5f;
         public Ease moveEase = Ease.OutBounce;
         public List<Transform> movingObjects;
-        [Header("Enemy Spawn Rate")]
+        [Header("Enemy Spawning")]
         public int baseEnemySpawn = 4;
         public float startSpawnRate = 1.4f;
         public float updateRatePerFloor = -.08f;
@@ -30,6 +30,10 @@ namespace Floors
         private float _currentSpawnRate = 1f;
         [Space]
         public float spawnPointX = 2.88f;
+        [Header("Hardener")]
+        public TextFadeHelper textLifeIncreased;
+        public float extraHealthPerFloor = .167f; //? 1 / 6
+        public float extraHealthTextDuration = 2f;
 
         void Start(){
             soFloor.Value = 0;
@@ -49,6 +53,10 @@ namespace Floors
         private IEnumerator MovePlatformDown()
         {
             textCompleteFloor.FadeIn();
+            if(Mathf.Floor(extraHealthPerFloor * soFloor.Value) != Mathf.Floor(extraHealthPerFloor * (soFloor.Value + 1)))
+            {
+                StartCoroutine(ShowLifeIncreased());
+            }
             yield return new WaitForSeconds(textCompleteFloor.fadeDuration);
             foreach (var item in movingObjects)
             {
@@ -105,6 +113,13 @@ namespace Floors
                 Mathf.Min(baseEnemySpawn, soFloor.Value), 
                 Mathf.Max(baseEnemySpawn + 1, soFloor.Value + 1)
             );
-        }        
+        }      
+
+        private IEnumerator ShowLifeIncreased()
+        {
+            textLifeIncreased.FadeIn();
+            yield return new WaitForSeconds(extraHealthTextDuration);
+            textLifeIncreased.FadeOut();
+        }  
     }
 }
