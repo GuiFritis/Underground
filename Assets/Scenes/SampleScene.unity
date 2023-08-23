@@ -882,6 +882,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74689bc609f8c1c42bcf5f86e6d10cfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1536930096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1536930097}
+  m_Layer: 0
+  m_Name: transformBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1536930097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536930096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.85, y: -0.872, z: -0.073973164}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1602316980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,6 +1647,7 @@ MonoBehaviour:
   soEnemiesKilled: {fileID: 11400000, guid: db3e0980704ceff46902ddaece939666, type: 2}
   floors:
   - {fileID: 1570895686725601622, guid: 10eab3021853d444d93adf13a05f7618, type: 3}
+  - {fileID: 8980896973412467006, guid: 41f338ded9f7f1c41a0a23b1383a0e95, type: 3}
   moveDuration: 4
   moveDistance: -3.8
   moveEase: 3
@@ -1623,8 +1655,8 @@ MonoBehaviour:
   - {fileID: 2105183939}
   - {fileID: 519420032}
   - {fileID: 727705310}
-  startSpawnRate: 1.4
-  updateRatePerFloor: -0.08
+  startSpawnRate: 1.2
+  updateRatePerFloor: -0.06
   minStartSpawnRate: 0.5
   spawnPointX: 2.9
 --- !u!4 &2105183939
