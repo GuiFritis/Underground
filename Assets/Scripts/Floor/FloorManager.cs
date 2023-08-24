@@ -4,6 +4,7 @@ using UnityEngine;
 using Padrao.Core.Singleton;
 using Padrao.Utils;
 using DG.Tweening;
+using Sounds;
 
 namespace Floors
 {    
@@ -36,9 +37,10 @@ namespace Floors
         [Space]
         public float spawnPointX = 2.88f;
         [Header("Hardener")]
-        public TextFadeHelper textLifeIncreased;
+        public TextFadeHelper textHealthIncreased;
         public float extraHealthPerFloor = .167f; //? 1 / 6
         public float extraHealthTextDuration = 2f;
+        public AudioClip healthIncreasedSFX;
 
         void Start(){
             soFloor.Value = 0;
@@ -127,9 +129,13 @@ namespace Floors
 
         private IEnumerator ShowLifeIncreased()
         {
-            textLifeIncreased.FadeIn();
+            if(healthIncreasedSFX != null)
+            {
+                SFX_Pool.Instance.Play(healthIncreasedSFX);
+            }
+            textHealthIncreased.FadeIn();
             yield return new WaitForSeconds(extraHealthTextDuration);
-            textLifeIncreased.FadeOut();
+            textHealthIncreased.FadeOut();
         }  
     }
 }

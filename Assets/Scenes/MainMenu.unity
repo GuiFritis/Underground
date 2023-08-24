@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 445432808}
   - component: {fileID: 445432807}
   - component: {fileID: 445432806}
+  - component: {fileID: 445432809}
   m_Layer: 5
   m_Name: ChangeBackground
   m_TagString: Untagged
@@ -342,6 +343,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 445432809}
+        m_TargetAssemblyTypeName: Sounds.AudioRandomPlayClip, Assembly-CSharp
+        m_MethodName: PlayRandomAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1183185459}
         m_TargetAssemblyTypeName: MenuBackgroundManager, Assembly-CSharp
         m_MethodName: ChangeBackground
@@ -392,6 +405,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445432804}
   m_CullTransparentMesh: 1
+--- !u!114 &445432809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445432804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61292444ae86ea34ba5f0d20a2007e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audiosClips:
+  - {fileID: 8300000, guid: 4f13633ea56974e6dbf63eb99fa6c851, type: 3}
 --- !u!1 &533401925
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +757,63 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5785490922558543874, guid: 5a81a11a8c3fec14087c5e0747b91428, type: 3}
   m_PrefabInstance: {fileID: 1324039997}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1559257932
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6163161
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.27401233
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.025566109
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711060, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670330736753711062, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
+      propertyPath: m_Name
+      value: SFX_Pool
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0a0b575ca73d06642b15c775d622e3cd, type: 3}
 --- !u!1 &1643822385
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +962,7 @@ GameObject:
   - component: {fileID: 1658874841}
   - component: {fileID: 1658874840}
   - component: {fileID: 1658874839}
+  - component: {fileID: 1658874843}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -962,6 +1047,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1658874843}
+        m_TargetAssemblyTypeName: Sounds.AudioRandomPlayClip, Assembly-CSharp
+        m_MethodName: PlayRandomAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1658874839}
         m_TargetAssemblyTypeName: Padrao.Utils.LoadScene, Assembly-CSharp
         m_MethodName: LoadSceneByIndex
@@ -1012,6 +1109,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658874837}
   m_CullTransparentMesh: 1
+--- !u!114 &1658874843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658874837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61292444ae86ea34ba5f0d20a2007e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audiosClips:
+  - {fileID: 8300000, guid: 4f13633ea56974e6dbf63eb99fa6c851, type: 3}
 --- !u!1 &1716514676
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4963305476309154450}
   - component: {fileID: 4963305476309154451}
   - component: {fileID: -2101093807785637643}
+  - component: {fileID: 957471948}
+  - component: {fileID: 6568959923787204196}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -27,7 +29,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4963305476309154449}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -123,15 +125,27 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -2101093807785637643}
-        m_TargetAssemblyTypeName: Padrao.Utils.LoadScene, Assembly-CSharp
-        m_MethodName: LoadSceneByIndex
-        m_Mode: 3
+      - m_Target: {fileID: 6568959923787204196}
+        m_TargetAssemblyTypeName: Sounds.AudioRandomPlayClip, Assembly-CSharp
+        m_MethodName: PlayRandomAudio
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 957471948}
+        m_TargetAssemblyTypeName: TimeScaleSetter, Assembly-CSharp
+        m_MethodName: SetTimeScale
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -147,6 +161,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421c863856ee89040a0b922c2faf1b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &957471948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963305476309154449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd89cd1a1c04c6f40a48e06b26b03523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6568959923787204196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963305476309154449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61292444ae86ea34ba5f0d20a2007e09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audiosClips:
+  - {fileID: 8300000, guid: 4f13633ea56974e6dbf63eb99fa6c851, type: 3}
 --- !u!1 &4963305476615254956
 GameObject:
   m_ObjectHideFlags: 0
