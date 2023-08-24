@@ -140,6 +140,10 @@ MonoBehaviour:
   floorEnemies:
   - pfbEnemy: {fileID: 7427147981008432979, guid: 124352052dafbe74691ec24fce8983da, type: 3}
     startPointY: -0.546
+  - pfbEnemy: {fileID: 4807333281774618514, guid: 1071695214c0cb9479b1ded233d2e0bd, type: 3}
+    startPointY: -0.8974866
+  - pfbEnemy: {fileID: 1016977502778486768, guid: 9f7bd7e60e8a6fc4aa661d3c0e17a4ae, type: 3}
+    startPointY: 0.335
   floorItens:
   - {fileID: 6789718090066811385}
   - {fileID: 1942678974191835843}
