@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633269055864108608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.49, y: 0.31, z: 0.007864216}
+  m_LocalPosition: {x: 0.0271, y: 0.31, z: 0.007864216}
   m_LocalScale: {x: 1.372112, y: 1.497393, z: 1.372112}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 7.68, y: 1.92}
+  m_DrawMode: 2
+  m_Size: {x: 4.3061132, y: 1.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -108,15 +108,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633269056205460442}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1633269055864108611}
   - {fileID: 1633269057694432173}
-  - {fileID: 1633269056340405857}
-  - {fileID: 1633269057068428050}
   - {fileID: 1633269057487389051}
   - {fileID: 1633269056271328252}
   - {fileID: 1633269057168507477}
@@ -178,7 +176,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1633269056205460452}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1633269056271328255
 SpriteRenderer:
@@ -257,12 +255,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633269056340405862}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.41, y: 0.17949998, z: 0.007864216}
+  m_LocalPosition: {x: -2.4, y: 0.026499987, z: 0}
   m_LocalScale: {x: 0.6964, y: 0.69640005, z: 0.6964}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1633269056205460452}
-  m_RootOrder: 2
+  m_Father: {fileID: 1633269057694432173}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1633269056340405856
 SpriteRenderer:
@@ -487,12 +485,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633269057068428051}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.443, y: 0.153, z: 0.007864216}
+  m_LocalPosition: {x: 2.4, y: 0, z: 0}
   m_LocalScale: {x: 0.6964, y: 0.69640005, z: 0.6964}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1633269056205460452}
-  m_RootOrder: 3
+  m_Father: {fileID: 1633269057694432173}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1633269057068428061
 SpriteRenderer:
@@ -577,7 +575,7 @@ Transform:
   - {fileID: 1633269056648681325}
   - {fileID: 1633269057820577244}
   m_Father: {fileID: 1633269056205460452}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1633269057487389048
 GameObject:
@@ -609,7 +607,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1633269056205460452}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1633269057487389050
 SpriteRenderer:
@@ -687,10 +685,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633269057694432162}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.443, y: 0.153, z: 0.007864216}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1633269056340405857}
+  - {fileID: 1633269057068428050}
   m_Father: {fileID: 1633269056205460452}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -849,7 +849,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2671270068586996628, guid: 361efce4858c6c6439e370d80596ff89, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2671270068586996628, guid: 361efce4858c6c6439e370d80596ff89, type: 3}
       propertyPath: m_LocalPosition.x
