@@ -98,6 +98,11 @@ public class Player : MonoBehaviour
         _velocityX = 0f;
     }
 
+    void OnDisable()
+    {
+        _inputs.Disable();
+    }
+
     private void SetInputs()
     {
         _inputs = new Gameplay();
@@ -389,11 +394,6 @@ public class Player : MonoBehaviour
 
     private void OnPlayerDeath(HealthBase hp){
         healthBase.OnDeath -= OnPlayerDeath;
-        _inputs.Disable();
-    }
-
-    void OnDisable()
-    {
         _inputs.Disable();
     }
 

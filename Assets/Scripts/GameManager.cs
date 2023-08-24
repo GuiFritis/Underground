@@ -20,20 +20,28 @@ public class GameManager : Singleton<GameManager>
         player.healthBase.OnDeath += h => GameOver();
     }
 
+    void OnDisable() 
+    {
+        inputAction.action.Disable();
+
+        inputAction.action.started -= CallMenu;
+    }
+
     private void SetInput()
     {
         inputAction.action.Enable();
 
-        inputAction.action.started += ctx => CallMenu();
+        inputAction.action.started += CallMenu;
     }
 
-    public void CallMenu()
+    public void CallMenu(InputAction.CallbackContext ctx)
     {
         if(menuSFX != null)
         {
             SFX_Pool.Instance.Play(menuSFX);
         }
         bool screenState = !ScreenManager.Instance.GetScreenStateByType(GameplayScreenType.MENU);
+        Debug.Log(screenState?"true":"false");        
         ScreenManager.Instance.ShowScreen(GameplayScreenType.MENU, screenState);
         Time.timeScale = screenState ? 0 : 1;
     }
@@ -45,6 +53,7 @@ public class GameManager : Singleton<GameManager>
             MusicPlayer.Instance.StopMusic();
             SFX_Pool.Instance.Play(gameOverSFX);
         }
+        inputAction.action.Disable();
         ScreenManager.Instance.HideAllScreens();
         ScreenManager.Instance.ShowScreen(GameplayScreenType.GAME_OVER);
         Time.timeScale = 0;
