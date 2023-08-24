@@ -192,5 +192,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 4201614502013307066}
   sprite: {fileID: 2047195271773766741}
-  flashDuration: 0.3
-  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.4
+  targetColor: {r: 0.8301887, g: 0, b: 0, a: 1}
