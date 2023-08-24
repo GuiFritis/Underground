@@ -42,6 +42,7 @@ public class GameManager : Singleton<GameManager>
     {
         if(gameOverSFX != null)
         {
+            MusicPlayer.Instance.StopMusic();
             SFX_Pool.Instance.Play(gameOverSFX);
         }
         ScreenManager.Instance.HideAllScreens();
