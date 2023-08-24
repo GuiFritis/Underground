@@ -2121,6 +2121,7 @@ MonoBehaviour:
   - {fileID: 1042784909913012702, guid: 7367129c437ffee42a74aa98826de29c, type: 3}
   - {fileID: 2571139913937857038, guid: e3f4f4d6b734c8145909b38d0fca090e, type: 3}
   - {fileID: 1633269056205460453, guid: fce512d279647d14a9374a89c9088081, type: 3}
+  - {fileID: -4263102466092508198, guid: 48743b84301c4cc4c847892ee09798a6, type: 3}
   textCompleteFloor: {fileID: 1785870382}
   moveDuration: 4
   moveDistance: -3.8
