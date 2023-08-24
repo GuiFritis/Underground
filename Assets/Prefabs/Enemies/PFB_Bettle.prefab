@@ -149,8 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLife: 1
-  destroyOnDeath: 0
-  delayToKill: 0
+  destroyOnDeath: 1
+  delayToKill: 0.1
 --- !u!114 &6716796402610964
 MonoBehaviour:
   m_ObjectHideFlags: 0

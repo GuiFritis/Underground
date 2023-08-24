@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using Sounds;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(HealthBase))]
 public class Player : MonoBehaviour
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
 
     [Space]
     public float imunityTime = 1f;
+    public AudioClip hurtSfx;
 
     [Header("Movement")]
     public float maxSpeed = 24f;   
@@ -26,12 +28,14 @@ public class Player : MonoBehaviour
 
     [Header("Jump")]
     public ParticleSystem jumpVFX;
+    public AudioRandomPlayClip jumpSFX;
     public float jumpForce = 5f;
     public float coyoteTime = 0.2f;
     public float jumpDelayTime = 0.1f;
 
     [Header("Fall")]
     public ParticleSystem landVFX;
+    public AudioRandomPlayClip landSFX;
     public Vector2 landingCheckBox = Vector2.zero;
     public float heightCheckBoxOffset = 0.5f;
     [Range(-100, 0)]
@@ -62,6 +66,7 @@ public class Player : MonoBehaviour
     public float rechargeRate = 1f;
     public LayerMask targetLayer;
     public ParticleSystem attackVFX;
+    public AudioClip shotSFX;
     private float _attackCooldown = 0f;
     private Collider2D[] _hitColliders;
 
@@ -71,6 +76,7 @@ public class Player : MonoBehaviour
     public Vector2 specialAttackSize = Vector2.zero;
     public ParticleSystem specialAttackVFX;
     public ParticleSystem specialAttackBlastVFX;
+    public AudioClip specialShootSFX;
     private int _combo = 1;
 
     void OnValidate()
@@ -209,6 +215,7 @@ public class Player : MonoBehaviour
     private void AnimateJump(){
         animator?.SetTrigger(_animatorJump);
         jumpVFX?.Play();
+        jumpSFX?.PlayRandomAudio();
     }
     #endregion
 
@@ -254,6 +261,7 @@ public class Player : MonoBehaviour
     private void AnimateLanding(){   
         animator?.SetBool(_animatorFalling, false);
         landVFX?.Play();
+        landSFX?.PlayRandomAudio();
     }
     #endregion
 
@@ -302,6 +310,10 @@ public class Player : MonoBehaviour
             }
         }
         attackVFX?.Play();
+        if(shotSFX != null)
+        {
+            SFX_Pool.Instance.Play(shotSFX);
+        }
         StartCoroutine(AttackAnimation());
         _attackCooldown = attackRate;
         _combo++;
@@ -325,7 +337,11 @@ public class Player : MonoBehaviour
             }
         }
         specialAttackVFX?.Play();
-        specialAttackBlastVFX?.Play();
+        specialAttackBlastVFX?.Play();        
+        if(specialShootSFX != null)
+        {
+            SFX_Pool.Instance.Play(specialShootSFX);
+        }
         StartCoroutine(AttackAnimation());
         _attackCooldown = rechargeRate;
         _combo = 1;
@@ -358,6 +374,10 @@ public class Player : MonoBehaviour
     private void PlayerDamaged(HealthBase hp, int damage)
     {
         StartCoroutine(BecomeImune());
+        if(hurtSfx != null)
+        {
+            SFX_Pool.Instance.Play(hurtSfx);
+        }
     }
 
     private IEnumerator BecomeImune()

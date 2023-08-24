@@ -167,10 +167,10 @@ MonoBehaviour:
   sprite: {fileID: 6812407487779619627}
   animator: {fileID: 8088254467605490075}
   _target: {fileID: 0}
-  speed: 1.2
+  speed: 1.1
   outOfSightSpeedMultiplier: 0.1
-  speedTransitionDuration: 1
-  sightHeight: 0.3
+  speedTransitionDuration: 0.3
+  sightHeight: 0.25
   stopChaseDistance: 0.2
   spriteFacingRight: 0
 --- !u!114 &1600192635652441322

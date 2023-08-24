@@ -18,6 +18,7 @@ namespace Floors
         private Floor _nextFloor;
         [Header("Main Platform Move")]
         public TextFadeHelper textCompleteFloor;
+        public AudioSource sfxPlatformMove;
         public float moveDuration = 3f;
         public float moveDistance = -5f;
         public Ease moveEase = Ease.OutBounce;
@@ -61,6 +62,7 @@ namespace Floors
             {
                 StartCoroutine(ShowLifeIncreased());
             }
+            sfxPlatformMove.Play();
             yield return new WaitForSeconds(textCompleteFloor.fadeDuration);
             foreach (var item in movingObjects)
             {

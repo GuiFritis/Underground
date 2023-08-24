@@ -4,15 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Padrao.Core.Singleton;
 
-public abstract class PoolBase<T, X> : Singleton<X> where T : Behaviour where X : MonoBehaviour
+public abstract class PoolBase<T, S> : Singleton<S> where T : Behaviour where S : MonoBehaviour
 {
     public int preWarmSize = 2;
-    public bool finite = false;
-    public int maxPoolSize = 1000;
     public T PFB_item;
 
-    protected List<T> _pool = new List<T>();
-    protected int _currentIndex;
+    protected List<T> _pool = new();
 
     protected override void Awake()
     {
@@ -22,8 +19,7 @@ public abstract class PoolBase<T, X> : Singleton<X> where T : Behaviour where X 
 
     private void InitPool()
     {
-        _pool = new List<T>();
-        _currentIndex = 0;
+        _pool = new();
 
         for (int i = 0; i < preWarmSize; i++)
         {
@@ -33,42 +29,21 @@ public abstract class PoolBase<T, X> : Singleton<X> where T : Behaviour where X 
 
     private void CreatePoolItem()
     {
-        _pool.Add(Instantiate(PFB_item, gameObject.transform));
+        T item = Instantiate(PFB_item, gameObject.transform);
+        _pool.Add(item);
     }
 
     public T GetPoolItem()
     {
         T item = null;
-        if(finite)
+        item = _pool.Find(CheckItem);
+        if(item == null)
         {
-            if(_currentIndex == _pool.Count)
-            {
-                if(maxPoolSize == _pool.Count)
-                {
-                    _currentIndex = 0;
-                }
-                else
-                {
-                    CreatePoolItem();
-                }
-            }
-            item = _pool[_currentIndex];
-            _currentIndex++;
-        }
-        else
-        {
-            item = _pool.Find(CheckItem);
-            if(item == null)
-            {
-                CreatePoolItem();
-                item = _pool[^1];
-            }
+            CreatePoolItem();
+            item = _pool[^1];
         }
         return item;
     }
 
-    protected virtual bool CheckItem(T item)
-    {
-        return !item.gameObject.activeInHierarchy;
-    }
+    protected abstract bool CheckItem(T item);
 }

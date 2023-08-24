@@ -120,7 +120,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.000000059604645, y: -0.027462184}
@@ -167,7 +167,7 @@ MonoBehaviour:
   sprite: {fileID: 8548550758262450712}
   animator: {fileID: 3046962186348635683}
   _target: {fileID: 0}
-  speed: 0.4
+  speed: -0.4
   outOfSightSpeedMultiplier: 0.001
   speedTransitionDuration: 0.25
   sightHeight: 0.4
