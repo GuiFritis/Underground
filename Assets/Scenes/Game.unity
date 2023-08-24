@@ -2130,10 +2130,13 @@ MonoBehaviour:
   - {fileID: 2105183939}
   - {fileID: 519420032}
   - {fileID: 727705310}
-  baseEnemySpawn: 4
+  minEnemySpawning: 3
+  maxEnemySpawning: 5
+  updateFloorMinEnemySpawning: 0.2
+  updateFloorMaxEnemySpawning: 0.4
   startSpawnRate: 1.2
   updateRatePerFloor: -0.06
-  minStartSpawnRate: 0.5
+  minSpawnRate: 0.8
   spawnPointX: 2.9
   textLifeIncreased: {fileID: 948511770}
   extraHealthPerFloor: 0.18

@@ -22,11 +22,15 @@ namespace Floors
         public float moveDistance = -5f;
         public Ease moveEase = Ease.OutBounce;
         public List<Transform> movingObjects;
-        [Header("Enemy Spawning")]
-        public int baseEnemySpawn = 4;
+        [Header("Amount of Enemies Spawned")]
+        public float minEnemySpawning = 1f;
+        public float maxEnemySpawning = 4f;
+        public float updateFloorMinEnemySpawning = .2f;
+        public float updateFloorMaxEnemySpawning = .4f;
+        [Header("Enemies Spawn Rate")]
         public float startSpawnRate = 1.4f;
         public float updateRatePerFloor = -.08f;
-        public float minStartSpawnRate = .5f;
+        public float minSpawnRate = .5f;
         private float _currentSpawnRate = 1f;
         [Space]
         public float spawnPointX = 2.88f;
@@ -83,6 +87,12 @@ namespace Floors
             _currentFloor.StartFloor(_currentSpawnRate);
             _currentFloor.OnComplete += FloorCompleted;
             _currentSpawnRate += updateRatePerFloor;
+            minEnemySpawning += updateFloorMinEnemySpawning;
+            maxEnemySpawning += updateFloorMaxEnemySpawning;
+            if(_currentSpawnRate < minSpawnRate)
+            {
+                _currentSpawnRate = minSpawnRate;
+            }
             GenerateNextFloor();
         }
 
@@ -98,9 +108,8 @@ namespace Floors
             }
             _nextFloor = Instantiate(_nextFloor, transform.position + Vector3.up * moveDistance, Quaternion.identity);
             _nextFloor.enabled = false;
-            _nextFloor.enemiesToSpawn = baseEnemySpawn + Random.Range(
-                Mathf.Min(baseEnemySpawn, soFloor.Value), 
-                Mathf.Max(baseEnemySpawn + 1, soFloor.Value + 1)
+            _nextFloor.enemiesToSpawn = Mathf.FloorToInt(
+                Random.Range(minEnemySpawning, maxEnemySpawning)
             );
         }
         
@@ -109,9 +118,8 @@ namespace Floors
             _nextFloor = floors.GetRandom();
             _nextFloor = Instantiate(_nextFloor, transform.position, Quaternion.identity);
             _nextFloor.enabled = false;
-            _nextFloor.enemiesToSpawn = baseEnemySpawn + Random.Range(
-                Mathf.Min(baseEnemySpawn, soFloor.Value), 
-                Mathf.Max(baseEnemySpawn + 1, soFloor.Value + 1)
+            _nextFloor.enemiesToSpawn = Mathf.FloorToInt(
+                Random.Range(minEnemySpawning, maxEnemySpawning)
             );
         }      
 
