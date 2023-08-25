@@ -2980,7 +2980,7 @@ MonoBehaviour:
   - {fileID: 727705310}
   minEnemySpawning: 3
   maxEnemySpawning: 5
-  updateFloorMinEnemySpawning: 0.2
+  updateFloorMinEnemySpawning: 0.25
   updateFloorMaxEnemySpawning: 0.4
   startSpawnRate: 1.2
   updateRatePerFloor: -0.06

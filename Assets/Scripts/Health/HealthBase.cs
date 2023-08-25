@@ -6,8 +6,8 @@ using UnityEngine;
 public class HealthBase : MonoBehaviour
 {
     public int startLife = 5;
-    public bool destroyOnDeath = false;
-    public float delayToKill = 0f;
+    public bool destroyOnDeath = true;
+    public float delayToKill = 0.1f;
     public Action<HealthBase, int> OnDamage;
     public Action<HealthBase> OnDeath;
     private int _currentLife;

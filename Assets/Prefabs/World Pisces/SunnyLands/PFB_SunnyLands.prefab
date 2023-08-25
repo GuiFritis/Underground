@@ -1658,6 +1658,8 @@ MonoBehaviour:
     startPointY: 0.71
   - pfbEnemy: {fileID: 5931956715766705642, guid: e582505f6c4849b41a5cd18f72eec899, type: 3}
     startPointY: -0.75
+  - pfbEnemy: {fileID: 1426174369452484842, guid: f392a949df171bb46943e7bea4a63835, type: 3}
+    startPointY: -0.95
   floorItens:
   - {fileID: 7012150446262180642}
   enemiesToSpawn: 0

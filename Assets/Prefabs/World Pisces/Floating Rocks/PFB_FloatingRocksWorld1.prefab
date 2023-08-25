@@ -411,6 +411,8 @@ MonoBehaviour:
     startPointY: -0.913
   - pfbEnemy: {fileID: 6281185316537577692, guid: 0688792c717c06743a6c31a46a026dd9, type: 3}
     startPointY: 1
+  - pfbEnemy: {fileID: 2022030470830220702, guid: 52b12f4dc6ff7384ea022c4c73a01f9e, type: 3}
+    startPointY: -0.16
   floorItens:
   - {fileID: 5449202800086246008}
   - {fileID: 713932985166071392}
