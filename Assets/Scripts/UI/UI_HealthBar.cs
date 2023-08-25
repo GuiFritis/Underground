@@ -28,7 +28,6 @@ public class UI_HealthBar : MonoBehaviour
     {
         if(uiHealth != null && health != null)
         {
-            uiHealth.DOKill();
             if(resizeCoroutine != null)
             {
                 StopCoroutine(resizeCoroutine);
@@ -50,5 +49,9 @@ public class UI_HealthBar : MonoBehaviour
             timer += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+        uiHealth.sizeDelta = new Vector2(
+            baseWidth * health.GetCurrentHealth(), 
+            uiHealth.sizeDelta.y
+        );
     }
 }
