@@ -12,6 +12,7 @@ namespace Floors
     {
         public Player player;
         [Header("Floors")]
+        public float delayToStart = 1f;
         public SOInt soFloor;
         public SOInt soEnemiesKilled;
         public List<Floor> floors = new();
@@ -47,7 +48,7 @@ namespace Floors
             soEnemiesKilled.Value = 0;
             _currentSpawnRate = startSpawnRate;
             GenerateFirstFloor();
-            StartNextFloor();
+            Invoke(nameof(StartNextFloor), delayToStart);
         }
 
         private void FloorCompleted()
