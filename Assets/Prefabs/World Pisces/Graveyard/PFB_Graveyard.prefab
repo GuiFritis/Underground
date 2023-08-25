@@ -3052,6 +3052,7 @@ GameObject:
   m_Component:
   - component: {fileID: 777605104431469746}
   - component: {fileID: 8837195774433172324}
+  - component: {fileID: 897784860798372653}
   m_Layer: 0
   m_Name: clouds
   m_TagString: Untagged
@@ -3067,7 +3068,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2991886771668535725}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.013, y: -1.14, z: 0}
+  m_LocalPosition: {x: -0.0048, y: -1.14, z: 0}
   m_LocalScale: {x: 1, y: 0.8856, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3112,20 +3113,34 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 728449371
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: -487713337
+  m_SortingLayer: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: e5bd0397035914333a8d430a1a5d7d16, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.28627452}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5.44, y: 2.36}
+  m_DrawMode: 2
+  m_Size: {x: 5.505569, y: 2.36}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
+--- !u!114 &897784860798372653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2991886771668535725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eafebf2a722f41428d75fa116d3fe79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 8837195774433172324}
+  speed: 0.12
 --- !u!1 &5280014957369939435
 GameObject:
   m_ObjectHideFlags: 0
