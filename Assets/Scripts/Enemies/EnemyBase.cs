@@ -8,6 +8,7 @@ public class EnemyBase : MonoBehaviour
     public HealthBase health;
     public SpriteRenderer sprite;
     public Animator animator;
+    public float healthBarOffsetY = .3f;
     [SerializeField]
     protected Player _target;
 
@@ -32,5 +33,11 @@ public class EnemyBase : MonoBehaviour
     {
         health.OnDeath -= OnDeath;
         Destroy(gameObject);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position + Vector3.up * healthBarOffsetY, .1f);
     }
 }

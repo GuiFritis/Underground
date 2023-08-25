@@ -166,8 +166,9 @@ MonoBehaviour:
   health: {fileID: 3067116874182393868}
   sprite: {fileID: 4333448400683953422}
   animator: {fileID: 9043730707441955881}
+  healthBarOffsetY: 0.18
   _target: {fileID: 0}
-  speed: 0.43
+  speed: 0.75
   stopFlyghtDistance: 0.2
   spriteFacingRight: 0
 --- !u!114 &2995414517785559932

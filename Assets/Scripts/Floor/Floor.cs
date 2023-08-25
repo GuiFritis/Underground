@@ -88,6 +88,7 @@ namespace Floors
             enemy.health.IncreaseHealth(
                 Mathf.FloorToInt(FloorManager.Instance.extraHealthPerFloor * FloorManager.Instance.soFloor.Value)
             );
+            EnemyHealthBar_Pool.Instance.ShowHealthBar(enemy.health, enemy.healthBarOffsetY);
             _spawnedEnemies++;
             enemy.health.OnDeath += EnemyKilled;
         }
