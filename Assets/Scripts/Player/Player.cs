@@ -312,6 +312,7 @@ public class Player : MonoBehaviour
             foreach (var item in _hitColliders)
             {
                 item.GetComponent<HealthBase>()?.TakeDamage(damage);
+                HitVFX_Pool.Instance.Play(item.transform.position);
             }
         }
         attackVFX?.Play();
@@ -339,6 +340,7 @@ public class Player : MonoBehaviour
             foreach (var item in _hitColliders)
             {
                 item.GetComponent<HealthBase>()?.TakeDamage(specialAttackDamage);
+                HitVFX_Pool.Instance.Play(item.transform.position);
             }
         }
         specialAttackVFX?.Play();

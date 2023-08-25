@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Padrao.Core.Singleton;
 
-public abstract class PoolBase<T, S> : Singleton<S> where T : Behaviour where S : MonoBehaviour
+public abstract class PoolBase<T, S> : Singleton<S> where T : Component where S : MonoBehaviour
 {
     public int preWarmSize = 2;
     public T PFB_item;
