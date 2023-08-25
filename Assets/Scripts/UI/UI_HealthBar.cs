@@ -21,10 +21,10 @@ public class UI_HealthBar : MonoBehaviour
 
     public void HealthSet()
     {
-        health.OnDamage += Damaged;
+        health.OnLifeChange += Damaged;
     }
 
-    protected virtual void Damaged(HealthBase hp, int damage)
+    protected virtual void Damaged(HealthBase hp)
     {
         if(uiHealth != null && health != null)
         {

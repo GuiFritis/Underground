@@ -18,7 +18,7 @@ public class UI_HealthBarEnemy : UI_HealthBar
     {
         if(health != null)
         {
-            health.OnDamage -= Damaged;
+            health.OnLifeChange -= Damaged;
         }
         health = hp;
         HealthSet();

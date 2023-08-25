@@ -10,7 +10,9 @@ namespace Floors
 {    
     public class FloorManager : Singleton<FloorManager>
     {
+        [Header("Player")]
         public Player player;
+        public int floorLevelUp = 9;
         [Header("Floors")]
         public float delayToStart = 1f;
         public SOInt soFloor;
@@ -55,6 +57,10 @@ namespace Floors
         {
             _currentFloor.OnComplete -= FloorCompleted;
             _currentFloor.EndFloor();
+            if(soFloor.Value % floorLevelUp == 0)
+            {
+                player.LevelUp();
+            }
             StartCoroutine(MovePlatformDown());
         }
 

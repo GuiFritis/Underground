@@ -9,6 +9,7 @@ public class HealthBase : MonoBehaviour
     public bool destroyOnDeath = true;
     public float delayToKill = 0.1f;
     public Action<HealthBase, int> OnDamage;
+    public Action<HealthBase> OnLifeChange;
     public Action<HealthBase> OnDeath;
     private int _currentLife;
     private bool _isDead = false;
@@ -39,6 +40,7 @@ public class HealthBase : MonoBehaviour
 
         _currentLife -= damage;
         OnDamage?.Invoke(this, damage);
+        OnLifeChange?.Invoke(this);
 
         if(_currentLife <= 0){
             Kill();
@@ -61,6 +63,7 @@ public class HealthBase : MonoBehaviour
     public void IncreaseHealth(int extraHealth)
     {
         _currentLife += extraHealth;
+        OnLifeChange?.Invoke(this);
     }
 
     public int GetCurrentHealth()

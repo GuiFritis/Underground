@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 using Sounds;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(HealthBase))]
 public class Player : MonoBehaviour
@@ -78,6 +79,11 @@ public class Player : MonoBehaviour
     public ParticleSystem specialAttackBlastVFX;
     public AudioClip specialShootSFX;
     private int _combo = 1;
+
+    [Header("Level Up FX")]    
+    public LevelUpText levelUpText;
+    public AudioClip levelUpSFX;
+    public ParticleSystem levelUpVFX;
 
     void OnValidate()
     {
@@ -377,6 +383,18 @@ public class Player : MonoBehaviour
         animator.SetBool(_animatorPlatformMoving, false);
     }
     #endregion
+
+    public void LevelUp()
+    {
+        levelUpText.ShowLevelUpText();
+        healthBase.IncreaseHealth(1);
+        specialAttackDamage++;
+        if(levelUpSFX != null)
+        {
+            SFX_Pool.Instance.Play(levelUpSFX);
+        }
+        levelUpVFX?.Play();
+    }
 
     private void PlayerDamaged(HealthBase hp, int damage)
     {
