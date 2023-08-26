@@ -3,15 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using Floors;
+using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
     public List<TutorialStep> steps = new();
+    public Image panel;
     public float fadeDuration;
     public float delayBetweenSteps = .2f;
     public TextMeshProUGUI textMesh;
     private Color _originalColor;
     private int _currentStep;
+    private string _playerPrefTutorial = "TutorialDone";
+
+    void Awake()
+    {
+        if(PlayerPrefs.GetInt(_playerPrefTutorial, 0) == 1)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            FloorManager.Instance.delayToStart = fadeDuration * steps.Count * 2 + delayBetweenSteps * steps.Count ;
+            foreach (var item in steps)
+            {
+                FloorManager.Instance.delayToStart += item.duration;
+            }
+        }
+    }
 
     void Start()
     {
@@ -32,6 +52,11 @@ public class Tutorial : MonoBehaviour
         {
             yield return new WaitForSeconds(delayBetweenSteps);
             StartCoroutine(TutorialStep());
+        }
+        else
+        {
+            PlayerPrefs.SetInt(_playerPrefTutorial, 1);
+            panel.DOColor(Color.clear, fadeDuration).OnComplete(() => gameObject.SetActive(false));
         }
     }
 }
