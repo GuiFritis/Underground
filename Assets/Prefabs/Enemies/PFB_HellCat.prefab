@@ -168,7 +168,7 @@ MonoBehaviour:
   animator: {fileID: 8081220520852378222}
   healthBarOffsetY: 0.1
   _target: {fileID: 0}
-  speed: 1
+  speed: 0.9
   outOfSightSpeedMultiplier: 0.1
   speedTransitionDuration: 0.2
   sightHeight: 0.4
