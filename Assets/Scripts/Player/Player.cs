@@ -3,6 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using Sounds;
 using TMPro;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(HealthBase))]
 public class Player : MonoBehaviour
@@ -61,6 +62,7 @@ public class Player : MonoBehaviour
     private string _animatorShoot = "Shoot";
 
     [Header("Attack")]
+    public Action<int, int> OnShoot;
     public int damage = 1;
     public Vector2 attackSize = Vector2.zero;
     public float attackRate = .5f;
@@ -151,10 +153,6 @@ public class Player : MonoBehaviour
                 {
                     rigidbody2d.AddForce(Vector2.right * speedBost * _velocityX, ForceMode2D.Force);
                 } 
-                else if(Mathf.Sign(rigidbody2d.velocity.x) != Mathf.Sign(_velocityX))
-                {
-                    rigidbody2d.AddForce(Mathf.Abs(rigidbody2d.velocity.x) * Vector2.right * _velocityX, ForceMode2D.Impulse);
-                }
             }
 
             _accelerationX = (targetSpeed - rigidbody2d.velocity.x) * (_grounded ? 1f : airSpeedMultiplier);
@@ -300,6 +298,7 @@ public class Player : MonoBehaviour
             {
                 NormalAttack();
             }
+            OnShoot?.Invoke(comboAttack, _combo);
         }
     }
 

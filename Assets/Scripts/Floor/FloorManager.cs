@@ -8,6 +8,7 @@ using Sounds;
 
 namespace Floors
 {    
+    [DefaultExecutionOrder(-1)]
     public class FloorManager : Singleton<FloorManager>
     {
         [Header("Player")]
